@@ -12,3 +12,7 @@ An effect copying project which aims to create a `Colorful Confetti` effect just
 - macOS 13.0+
 
 > `AnyShape` needs iOS 16 and macOS 13.
+
+## Todo
+
+- [ ] Rewrite UI using SwiftUI Canvas (Still finding solution to apply 3D transformation on every single particle.)
