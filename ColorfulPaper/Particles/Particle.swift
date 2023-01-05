@@ -8,16 +8,14 @@
 import SwiftUI
 
 struct Particle {
-    var time: Double = 0.0
-    var lifetime: Double = Double.infinity
     
-    // 大小和形状
+    // MARK: Frame and Shape
     var size: CGSize = CGSize(width: 12, height: 24)
     var position: CGPoint = .zero
     var frame: CGRect { CGRect(origin: position, size: size) }
     var shape: AnyShape = AnyShape(Circle())
     
-    // 三维旋转
+    // MARK: 3D transformation
     var degrees: Double = 0.0
     var (x, y, z): (Double, Double, Double) = (0.0, 0.0, 0.0)
     var transform: CATransform3D {
@@ -25,11 +23,11 @@ struct Particle {
     }
     var rotationSpeed: Double = 0.0
 
-    // 颜色
+    // MARK: Color
     var color: Color = .gray
     var shading: GraphicsContext.Shading { .color(color) }
     
-    // 速度
+    // MARK: Speed
     /// The speed of the particle on the x and y axis.
     var velocity: CGSize = CGSize(width: 0, height: 0)
     /// The speed of the particle in total.
@@ -56,31 +54,24 @@ struct Particle {
     var m: Double = 1.0
     /// Resistance coefficient.
     var k: Double = 0.01
-    var emittingForce: Double = 0.0
-    var emittingDuration: Double = 0.0
     /// The acceleration on both x and y axis.
     /// Computed based on `g`, `m`, `k`, `totalVelocity` and `velocityAngle`
     var acceleration: CGSize {
-        CGSize(
-            width: (-k * totalVelocity + (time > emittingDuration ? 0.0 : emittingForce)) * cos(velocityAngle.radians) / m,
-            height: g + (time > emittingDuration ? 0.0 : emittingForce - k * totalVelocity) * sin(velocityAngle.radians) / m
-        )
+        /// ignore resistance in y-axis.
+        /// Strictly (in y-axis): `g - (k * totalVelocity) * sin(velocityAngle.radians) / m`
+        CGSize(width: (-k * totalVelocity) * cos(velocityAngle.radians) / m,
+               height: g)
     }
     
-    // 更新 Particle
-    // 返回当前 Particle 是否还在屏幕内显示
-    mutating func update(delta: Double) -> Bool {
-        time += delta
+    // MARK: Update particle for next frame
+    mutating func update(delta: Double) {
         var velocity = velocity
         position.x += velocity.width * delta
         position.y += velocity.height * delta
         let acceleration = acceleration
         velocity.width += acceleration.width * delta
         velocity.height += acceleration.height * delta
-//        print("\(self.velocity.width) -> \(velocity.width), acce: \(acceleration.width)")
         self.velocity = velocity
         degrees += rotationSpeed * delta
-        
-        return lifetime >= time
     }
 }

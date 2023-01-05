@@ -11,15 +11,30 @@
 		3842DF4429618D1D00963D7A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3842DF4329618D1D00963D7A /* ContentView.swift */; };
 		3842DF4629618D1F00963D7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3842DF4529618D1F00963D7A /* Assets.xcassets */; };
 		3842DF4929618D1F00963D7A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3842DF4829618D1F00963D7A /* Preview Assets.xcassets */; };
+		3842DF5329618DB100963D7A /* Particle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3842DF5229618DB100963D7A /* Particle.swift */; };
+		3842DF552961906F00963D7A /* ParticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3842DF542961906F00963D7A /* ParticleModel.swift */; };
+		385CC3D029640B0500F70C86 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385CC3CF29640B0500F70C86 /* SoundPlayer.swift */; };
+		385CC3D229640BDC00F70C86 /* sound.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 385CC3D129640BDC00F70C86 /* sound.m4a */; };
+		385CC3D42964262D00F70C86 /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385CC3D32964262D00F70C86 /* Triangle.swift */; };
+		385CC3D629642C3500F70C86 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385CC3D529642C3500F70C86 /* VisualEffectView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		38410EF029670E46009B8326 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		38410EF129670FF7009B8326 /* banner.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = banner.jpeg; sourceTree = "<group>"; };
 		3842DF3E29618D1D00963D7A /* ColorfulPaper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorfulPaper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3842DF4129618D1D00963D7A /* ColorfulPaperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorfulPaperApp.swift; sourceTree = "<group>"; };
 		3842DF4329618D1D00963D7A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3842DF4529618D1F00963D7A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3842DF4829618D1F00963D7A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3842DF4A29618D1F00963D7A /* ColorfulPaper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ColorfulPaper.entitlements; sourceTree = "<group>"; };
+		3842DF5229618DB100963D7A /* Particle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Particle.swift; sourceTree = "<group>"; };
+		3842DF542961906F00963D7A /* ParticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticleModel.swift; sourceTree = "<group>"; };
+		385124DB2965A29900C7A941 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		385CC3CF29640B0500F70C86 /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
+		385CC3D129640BDC00F70C86 /* sound.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = sound.m4a; sourceTree = "<group>"; };
+		385CC3D32964262D00F70C86 /* Triangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
+		385CC3D529642C3500F70C86 /* VisualEffectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,9 +48,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		38410EF229670FFA009B8326 /* img */ = {
+			isa = PBXGroup;
+			children = (
+				38410EF129670FF7009B8326 /* banner.jpeg */,
+			);
+			path = img;
+			sourceTree = "<group>";
+		};
 		3842DF3529618D1D00963D7A = {
 			isa = PBXGroup;
 			children = (
+				38410EF029670E46009B8326 /* README.md */,
+				38410EF229670FFA009B8326 /* img */,
 				3842DF4029618D1D00963D7A /* ColorfulPaper */,
 				3842DF3F29618D1D00963D7A /* Products */,
 			);
@@ -52,10 +77,15 @@
 		3842DF4029618D1D00963D7A /* ColorfulPaper */ = {
 			isa = PBXGroup;
 			children = (
+				385124DB2965A29900C7A941 /* Info.plist */,
 				3842DF4129618D1D00963D7A /* ColorfulPaperApp.swift */,
 				3842DF4329618D1D00963D7A /* ContentView.swift */,
+				385CC3D729642CCC00F70C86 /* Particles */,
+				385CC3D32964262D00F70C86 /* Triangle.swift */,
+				385CC3D129640BDC00F70C86 /* sound.m4a */,
 				3842DF4529618D1F00963D7A /* Assets.xcassets */,
 				3842DF4A29618D1F00963D7A /* ColorfulPaper.entitlements */,
+				385CC3D829642D0D00F70C86 /* macOS */,
 				3842DF4729618D1F00963D7A /* Preview Content */,
 			);
 			path = ColorfulPaper;
@@ -67,6 +97,24 @@
 				3842DF4829618D1F00963D7A /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		385CC3D729642CCC00F70C86 /* Particles */ = {
+			isa = PBXGroup;
+			children = (
+				3842DF5229618DB100963D7A /* Particle.swift */,
+				3842DF542961906F00963D7A /* ParticleModel.swift */,
+				385CC3CF29640B0500F70C86 /* SoundPlayer.swift */,
+			);
+			path = Particles;
+			sourceTree = "<group>";
+		};
+		385CC3D829642D0D00F70C86 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				385CC3D529642C3500F70C86 /* VisualEffectView.swift */,
+			);
+			path = macOS;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -85,6 +133,8 @@
 			dependencies = (
 			);
 			name = ColorfulPaper;
+			packageProductDependencies = (
+			);
 			productName = ColorfulPaper;
 			productReference = 3842DF3E29618D1D00963D7A /* ColorfulPaper.app */;
 			productType = "com.apple.product-type.application";
@@ -128,6 +178,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3842DF4929618D1F00963D7A /* Preview Assets.xcassets in Resources */,
+				385CC3D229640BDC00F70C86 /* sound.m4a in Resources */,
 				3842DF4629618D1F00963D7A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,8 +190,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				385CC3D42964262D00F70C86 /* Triangle.swift in Sources */,
 				3842DF4429618D1D00963D7A /* ContentView.swift in Sources */,
+				3842DF5329618DB100963D7A /* Particle.swift in Sources */,
 				3842DF4229618D1D00963D7A /* ColorfulPaperApp.swift in Sources */,
+				385CC3D629642C3500F70C86 /* VisualEffectView.swift in Sources */,
+				385CC3D029640B0500F70C86 /* SoundPlayer.swift in Sources */,
+				3842DF552961906F00963D7A /* ParticleModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,11 +253,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -251,10 +305,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
@@ -265,6 +317,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = ColorfulPaper/ColorfulPaper.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -274,16 +327,34 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ColorfulPaper/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ColorfulPaperEffect;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = liyanan2004.ColorfulPaper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -292,6 +363,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = ColorfulPaper/ColorfulPaper.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -301,16 +373,34 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ColorfulPaper/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ColorfulPaperEffect;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = liyanan2004.ColorfulPaper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

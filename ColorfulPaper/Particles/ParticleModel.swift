@@ -14,23 +14,31 @@ class ParticleModel: ObservableObject {
     }
     
     var particles = [Particle]()
-    var lastUpdate = Double.zero
-    var angleRange: ClosedRange<Double> = .pi / 36 ... .pi / 2
-    var soundPlayer = SoundPlayer()
+    private let soundPlayer = SoundPlayer()
+    private var currentTask: Task<Void, Error>?
+    private var lastUpdate = Double.zero
     
-    func update(at time: Double) {
+    func update(at time: Double, size: CGSize) {
         let delta = min(time - lastUpdate, 1 / 30)
         lastUpdate = time
         
-        updateOldParticles(delta: delta)
+        updateOldParticles(delta: delta, size: size)
     }
     
     func loadEffect(in size: CGSize) {
+#if os(iOS)
+        let generator = UIImpactFeedbackGenerator(style: .rigid)
+        generator.prepare()
+#endif
+        currentTask?.cancel()
         particles = []
         soundPlayer.play()
-        Task.detached {
-            try await Task.sleep(for: .milliseconds(200))
-            for _ in 0..<60 {
+        currentTask = Task.detached {
+#if os(iOS)
+            await generator.impactOccurred()
+#endif
+            try await Task.sleep(for: .milliseconds(100))
+            for _ in 0..<Int(size.width / 10) {
                 await self.createNewParticle(in: size, emitting: true)
             }
             try await Task.sleep(for: .milliseconds(size.width / 10))
@@ -46,13 +54,14 @@ class ParticleModel: ObservableObject {
         }
     }
     
-    private func updateOldParticles(delta: Double) {
+    private func updateOldParticles(delta: Double, size: CGSize) {
         let oldN = particles.count
         var newN = oldN
         var index = 0
         
         while index < newN {
-            if particles[index].update(delta: delta) {
+            particles[index].update(delta: delta)
+            if particleIsVisible(particles[index], in: size) {
                 index += 1
             } else {
                 newN -= 1
@@ -65,18 +74,41 @@ class ParticleModel: ObservableObject {
         }
     }
     
+    private func particleIsVisible(_ particle: Particle, in canvasSize: CGSize) -> Bool {
+        let topCenterPoint = CGPoint(
+            x: particle.position.x,
+            y: particle.position.y - particle.size.height / 2
+        )
+        guard topCenterPoint.y <= canvasSize.height else { return false }
+        guard topCenterPoint.x + particle.size.width / 2 >= 0 else { return false }
+        guard topCenterPoint.x - particle.size.width / 2 <= canvasSize.width else { return false }
+        
+        return true
+    }
+    
     @MainActor private func createNewParticle(in size: CGSize, emitting: Bool) {
-        let particle: Particle
+        guard !Task.isCancelled else { return }
+        
+        var particle: Particle
         if emitting {
             let xCenter = size.width / 2
-            let point = CGPoint(x: CGFloat.random(in: xCenter - 50...xCenter + 50),
+            let offset = size.width / 5
+            let point = CGPoint(x: CGFloat.random(in: xCenter - offset...xCenter + offset),
                                 y: CGFloat.random(in: -50 ... -30))
             let direction: Direction = point.x < size.width / 2 ? .left : .right
             particle = make(at: point, direction: direction)
+            particle.k = 5.0
         } else {
             particle = make(at: CGPoint(x: CGFloat.random(in: 0...size.width),
                                         y: CGFloat.random(in: -50 ... -30)))
         }
+        particles.insert(particle, at: 0)
+    }
+    
+    @MainActor private func createNewParticle(at position: CGPoint) {
+        guard !Task.isCancelled else { return }
+        
+        let particle = make(at: position)
         particles.insert(particle, at: 0)
     }
     
@@ -95,30 +127,21 @@ class ParticleModel: ObservableObject {
         particle.x = Double.random(in: 0...1)
         particle.y = Double.random(in: 0...1)
         particle.z = Double.random(in: 0...1)
-        
-        particle.emittingDuration = 0.03
-        particle.g = Double.random(in: 200...300)
+    
+        particle.g = Double.random(in: 300...400)
         if let direction {
-            let ang = direction == .left ? .pi - Double.random(in: angleRange) : Double.random(in: angleRange)
+            let ang = direction == .left ? .pi - Double.random(in: Double.emittingRange) : Double.random(in: Double.emittingRange)
             particle.velocity.height = Double.random(in: 200...600)
             particle.velocity.width = particle.velocity.height / tan(ang)
-            
-            particle.emittingForce = Double.random(in: 3000...5000) * direction.factor
-            particle.k = 5
         } else {
             particle.velocity.height = Double.random(in: 100...500)
         }
-        
-//        let totalDistance = lastSize.height - point.y
-//        let vt = sqrt(2 * particle.acceleration.height * totalDistance + pow(Double(particle.velocity.height), 2))
-//        particle.lifetime = (vt - particle.velocity.height) / particle.acceleration.height
-        
+    
         return particle
     }
      
     private func randomShape() -> AnyShape {
         let collection: [AnyShape] = [AnyShape(Circle()), AnyShape(Ellipse()), AnyShape(Rectangle()), AnyShape(Triangle())]
-        
         return collection.randomElement()!
     }
 }
@@ -129,3 +152,6 @@ extension Color {
     }
 }
 
+extension Double {
+    static var emittingRange: ClosedRange<Double> = 0 ... .pi / 3
+}

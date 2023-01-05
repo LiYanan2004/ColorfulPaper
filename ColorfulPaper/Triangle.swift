@@ -1,5 +1,5 @@
 //
-//  Traiangle.swift
+//  Triangle.swift
 //  ColorfulPaper
 //
 //  Created by LiYanan2004 on 2023/1/3.
